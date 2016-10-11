@@ -5,9 +5,6 @@ pipeline:
     image: julia:${JULIA_VERSION}
     commands:
       - echo ${JULIA_VERSION}
-      - echo ${DRONE_REPO_NAME}
-      - which diff
-      - ls /root/.julia/v${JULIA_VERSION}/StructTables/test/
       - julia -e 'Pkg.resolve(); Pkg.build("StructTables"); Pkg.test("StructTables"; coverage=true)'
 
 matrix:
