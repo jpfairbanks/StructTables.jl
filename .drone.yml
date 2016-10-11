@@ -1,10 +1,11 @@
+workspace:
+  path: /root/.julia/v${JULIA_VERSION}/StructTables/
 pipeline:
   build:
     image: julia:${JULIA_VERSION}
     commands:
       - echo ${JULIA_VERSION}
-      - mkdir -p /root/.julia/v${JULIA_VERSION}/
-      - cp -r /drone/src /root/.julia/v${JULIA_VERSION}/StructTables/
+      - echo ${DRONE_REPO_NAME}
       - which diff
       - ls /root/.julia/v${JULIA_VERSION}/StructTables/test/
       - julia -e 'Pkg.resolve(); Pkg.build("StructTables"); Pkg.test("StructTables"; coverage=true)'
