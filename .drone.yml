@@ -6,6 +6,7 @@ pipeline:
       - mkdir -p /root/.julia/v${JULIA_VERSION}/
       - cp -r /drone/src /root/.julia/v${JULIA_VERSION}/StructTables/
       - which diff
+      - ls /root/.julia/v${JULIA_VERSION}/StructTables/test/
       - julia -e 'Pkg.resolve(); Pkg.build("StructTables"); Pkg.test("StructTables"; coverage=true)'
 
 matrix:
