@@ -16,7 +16,8 @@ write(fp, takebuf_string(iob))
 close(fp)
 
 # use diff to check that the files match
-run(`diff table.tsv table.test.tsv`)
+# run(`diff table.tsv table.test.tsv`)
+@test readlines("table.tsv") == readlines("table.test.tsv")
 
 type Point4{T}
     n::Int

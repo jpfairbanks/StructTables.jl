@@ -1,0 +1,12 @@
+workspace:
+  path: /root/.julia/v${JULIA_VERSION}/StructTables/
+pipeline:
+  build:
+    image: julia:${JULIA_VERSION}
+    commands:
+      - echo ${JULIA_VERSION}
+      - julia -e 'Pkg.resolve(); Pkg.build("StructTables"); Pkg.test("StructTables"; coverage=true)'
+
+matrix:
+  JULIA_VERSION:
+    - 0.5
